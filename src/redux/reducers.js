@@ -8,6 +8,7 @@ const initialState = {
   fromCurrency: '',
   toCurrency: '',
   convertionResult: '',
+  exchangeRates: {},
 };
 
 const appState = (state = initialState, action) => {
@@ -22,6 +23,10 @@ const appState = (state = initialState, action) => {
       return { ...state, toCurrency: action.payload };
     case actionTypes.FETCH_CURRENCIES_CONVERTION_VAL_DONE:
       return { ...state, convertionResult: action.payload };
+    case actionTypes.FETCH_EXCHANGE_RATES:
+      return { ...state, exchangeRates: { status: 'loading', payload: null } };
+    case actionTypes.FETCH_EXCHANGE_RATES_DONE:
+      return { ...state, exchangeRates: { status: 'done', payload: action.payload } };
     default:
       return state;
   }
