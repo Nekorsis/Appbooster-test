@@ -8,6 +8,8 @@ export const actionTypes = {
   UPDATE_TO_CURRENCY: 'UPDATE_TO_CURRENCY',
   FETCH_EXCHANGE_RATES: 'FETCH_EXCHANGE_RATES',
   FETCH_EXCHANGE_RATES_DONE: 'FETCH_EXCHANGE_RATES_DONE',
+  ADD_TO_FAVORITES: 'ADD_TO_FAVORITES',
+  REMOVE_FROM_FAVORITES: 'REMOVE_FROM_FAVORITES',
 };
 
 const BASE_RATE_URL = 'https://ratesapi.io/api/';
@@ -52,4 +54,12 @@ export const getRates = currency => (dispatch) => {
     });
     dispatch({ type: actionTypes.FETCH_EXCHANGE_RATES_DONE, payload: result });
   });
+};
+
+export const addToFavorites = favorite => (dispatch) => {
+  dispatch({ type: actionTypes.ADD_TO_FAVORITES, payload: favorite });
+};
+
+export const removeFromFavorites = favorite => (dispatch) => {
+  dispatch({ type: actionTypes.REMOVE_FROM_FAVORITES, payload: favorite });
 };

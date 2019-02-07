@@ -9,6 +9,7 @@ const initialState = {
   toCurrency: '',
   convertionResult: '',
   exchangeRates: {},
+  favorites: [],
 };
 
 const appState = (state = initialState, action) => {
@@ -27,6 +28,8 @@ const appState = (state = initialState, action) => {
       return { ...state, exchangeRates: { status: 'loading', payload: null } };
     case actionTypes.FETCH_EXCHANGE_RATES_DONE:
       return { ...state, exchangeRates: { status: 'done', payload: action.payload } };
+    case actionTypes.ADD_TO_FAVORITES:
+      return { ...state, favorites: [...state.favorites, action.payload] };
     default:
       return state;
   }
